@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+         <img src="img/logo.svg" alt="teknosa logo">
+</header>
+ 
+
+<!--
+    <nav>
+    <a href="?kategori=bilgisayar">Bilgisayar</a>
+    <a href="?kategori=telefon">Telefon</a>
+    <a href="?kategori=televizyon">televizyon</a>
+</nav>
+-->
+ 
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'bilgisayar')">bilgisayar</button>
+  <button class="tablinks" onclick="openCity(event, 'Telefon')">Telefon</button>
+  <button class="tablinks" onclick="openCity(event, 'televizyon')">televizyon</button>
+</div>
+
+<div id="bilgisayar" class="tabcontent">
+  <h2>bilgisayar</h2>
+  <a href="?kategori=bilgisayar">Bilgisayar</a>
+</div>
+<div id="Telefon" class="tabcontent">
+  <h3>Telefon</h3>
+  <a href="?kategori=telefon">Telefon</a>
+</div>
+<div id="televizyon" class="tabcontent">
+  <h3>televizyon</h3>
+  <a href="?kategori=televizyon">televizyon</a>
+</div>
+
+ <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+ <h2>
+ <input type="search" id="search" name="search" placeholder="urun,kategori,marka">
+<label>
+    
+    <input type="submit" id="tablinks">
+    <input type="checkbox" checked="checked" name="remember"> Remember me
+</label>
+</h2>
+  
+<div class="container">
+
+    <?php
+    include "baglan.php";
+    $kategori=@$_GET["kategori"];
+    $sql ="SELECT *FROM urunler WHERE kategori='$kategori'";
+
+        $result=$conn->query($sql);
+    if($result->num_rows>0)
+    {
+    while($rows=$result->fetch_assoc())
+    {
+        echo "<div class=.urun>";
+            echo "<img width =200px height 200px  src =".$rows["urunResim"].">";
+            echo substr($rows["urunAdi"],0,100);
+            echo  $rows["urunfiyat"]; 
+        echo "</div>";
+        }
+    }
+    ?>
+</body>
+</html>
