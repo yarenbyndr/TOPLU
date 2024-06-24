@@ -1,0 +1,193 @@
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton.Size
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+      println("merhaba kotlin")
+      println(5*10)
+
+        println("........ınteger.....")
+
+        var a=5
+        var b=5
+        println(a*b)
+
+        var yas =50//değişken tanımlandıktan sonra değeri değiştirilmezse sarı vurgusu kalır
+        println(yas/10*8)
+
+        val pi=3.14
+        //pi=5 hata verir
+        //camelCase
+        //PascalCase
+        //snake_case
+        val benimIntegerim:Int  //tanımlama
+         benimIntegerim=5  //değer atama
+        var yeniInteger:Int=20 //aynı anda tanımlama ve değer atama
+        println(benimIntegerim/2)//iki değer de integer olduğunda sonuç 2 çıkar
+        var benimLong=100
+
+        benimLong=30000000//hata verir.varsayılan olarak int  algılanan değişkene büyük sayı veremeyiz
+        var benimLongum:Long=100
+        println("........double.....")
+        val pii=3.14//double algılar
+        println(pii*2)
+        val floatPi:Float=3.14f//float türünde sonuna  f  konulmalı
+        println(floatPi/2)
+
+        val yeniDouble=5.0
+        println(yeniDouble/2)
+        println("........string.....")
+
+        val benimStringim="benim yeni metnim"
+        println(benimStringim.length)
+        val isim ="şahika"
+        val soyisim ="yetkin"
+        val tamİsim =isim+" "+soyisim
+        println(tamİsim)
+
+        println("........Boolean.....")
+
+        var benimBoolean=true
+        benimBoolean=false
+        //benimBoolean=8 hata verir
+        println(7<5)
+        println(3<5)
+        println("........dönüştürme.....")
+      val benimInt=10
+      val longCevirilenInt=benimInt.toLong()
+
+     val kullanıcıGirdisi="50"
+        val kullanıcıInt=kullanıcıGirdisi.toInt()
+        println(kullanıcıInt/2)
+        println("........koleksiyonlar.....")
+        //koleksiyonların amacı birden fazla veriyi tutmaktır
+        //array,arrayList,set,map
+
+        println("........array--dizi.....")
+         var benimDizim= arrayOf("fatma","şahika","yetkin")
+        println(benimDizim[0])
+        println(benimDizim.get(0))//üstteki ile aynı yöntem-almak
+        benimDizim[2]="seyilli"
+        benimDizim.set(2,"deneme")//değiştirmek
+
+        var numaraDizisi= doubleArrayOf(1.0,2.0,3.0)
+        var karisikDizi= arrayOf("şahika",15,1.5,true)//kotline özgü
+
+        println("........arrayList -- listeler.....")//dizilere göre daha esnektir.sonradan eleman eklenebilir.
+
+       // var isimListesi = arrayListOf()//hata verir.ya veri türü girmeliyiz ya da değer atamalıyız.
+        var isimListesi = arrayListOf( "fatma","şahika","yetkin")
+        println(isimListesi.get(1))
+        isimListesi.add("ali")//Veri eklemek
+        isimListesi.add("deniz")
+        println(isimListesi.get(4))
+
+        var karisikArrayList = arrayListOf<String>()
+        //karisikArrayList.add(3)  hata verir
+
+        var baskaArrayList= arrayListOf<Any>()//herhangi bir veri türünden değer alabilir
+        baskaArrayList.add("şahika")
+        baskaArrayList.add(5)
+        baskaArrayList.add(true)
+        println(baskaArrayList.get(2))
+
+        println("........Set.....")//farklı olarak aynı veriden sadece 1 tane barındırıyor
+        var ornekDizi= arrayOf(7,8,9,9,8,10)
+        println(ornekDizi.size)// 7
+
+        var benimSet= setOf<Int>(7,8,9,9,8,10)
+        println(benimSet.size) // 4
+
+        //benimSet.get(2) komutu yok
+        benimSet.forEach{it;Int // forEach dizinin her bir verisini alır
+            println(it)  }
+        println("........Map.....")//anahtar kelime -değer eleşmesi(key value)
+        var yemekKaloriMap= hashMapOf<String,Int>()
+        yemekKaloriMap.put( "elma",100)
+        yemekKaloriMap.put("et",300)
+        yemekKaloriMap.put("tavuk",200)
+        println(yemekKaloriMap.get("et"))
+
+        println("........matematiksel işlemler.....")
+        var sayi=8
+        sayi=sayi+1
+        sayi++
+        sayi--
+        println(sayi)
+
+        var digerSayi=10
+        println(digerSayi>sayi) //true
+        println(digerSayi>sayi && 2>3 )//true veya false
+        println(digerSayi>sayi ||  2>3 )//true veya false
+
+        println(10+20)
+        println(10-20)
+        println(10*20)
+        println(10/20)
+        println(10%20)//kalan 0
+
+        println("........eğer kontrolleri.....")
+        var skor=30
+        if (skor<10){
+            println("oyunu kaybettin")        }
+
+        else if (skor>=10 && skor<20){
+            println("çok iyi skor aldın")
+        }
+        else if (skor>=20 && skor<30){
+            println("rekorlar kırıyorsun")
+        }
+        else{
+            println("30 ve üzeri efsane oynadın ")
+
+        }
+        println("........When (switch) kontrolleri....")
+        var notRakami=3
+        var mesaj=""
+        when(notRakami){
+            0->mesaj="geçersiz not"
+            1->mesaj="zayıf"
+            2->mesaj="geçer"
+            3->mesaj=" orta"
+            4->mesaj=" iyi"
+            5->mesaj="pek iyi"
+        }
+     println(mesaj)
+
+        println(".......for döngüleri....")
+        //belli koşula dayalı olarak işlemleri tekrarlar
+        var noDizisi= arrayOf(5,10,15,20,25,30)
+        for (numara in noDizisi ) {
+            println(numara)
+        }
+        for (b in 0..9){
+            println(b)
+        }
+      noDizisi.forEach {
+      println(it)
+      }
+        println(".......while döngüleri....")
+        //koşul sağlandığı sürece işlemleri yapar
+        var j=0
+        while (j<10){//0 ile 9 arasındaki rakamları yazar
+            println(j)
+            j++
+        }
+
+
+
+    }
+}
